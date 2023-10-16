@@ -39,6 +39,8 @@ I've forked his repo and will soon upload the headers for those to want to build
    `./vangogh_oc_fix-installer.sh`
 
 4. Run it in the current boot with `sudo modprobe vangogh_oc_fix cpu_default_soft_max_freq=<freq in Mhz>`
+5. Verify that the kernel module is running - \
+   `lsmod | grep van`
 
 ## How to Uninstall
 1. Go into Desktop Mode and open konsole terminal - \
