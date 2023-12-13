@@ -19,6 +19,9 @@ I've forked his repo and will soon upload the headers for those to want to build
 
 ## Video Tutorial - coming soon!
 
+## What's New (as of December 13 2023)
+1. SteamOS 3.5.7 support
+
 ## What's New (as of October 16 2023)
 1. initial release
 
