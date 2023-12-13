@@ -54,7 +54,7 @@ fi
 
 echo Checking kernel version ...
 sleep 2
-if [ $kernel_version = 6.1.52-valve3-1-neptune-61 ] || [ $kernel_version = 5.13.0-valve37-1-neptune ]
+if [ $kernel_version = 6.1.52-valve9-1-neptune-61 ] || [ $kernel_version = 6.1.52-valve3-1-neptune-61 ] || [ $kernel_version = 5.13.0-valve37-1-neptune ]
 then 
 	echo Kernel version $kernel_version is supported by this script!
 else
