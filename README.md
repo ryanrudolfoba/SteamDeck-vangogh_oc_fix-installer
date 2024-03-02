@@ -21,6 +21,7 @@ I've forked his repo and will soon upload the headers for those to want to build
 
 ## What's New (as of March 02 2024)
 1. SteamOS 3.5.17 support
+2. OLED support on BIOS F7G0109
 
 ## What's New (as of December 13 2023)
 1. SteamOS 3.5.7 support
