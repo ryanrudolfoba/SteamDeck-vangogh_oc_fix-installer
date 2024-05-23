@@ -2,10 +2,9 @@
 
 A simple shell script that installs a precompiled vangogh_oc_fix kernel module. \
 I've built this for SteamOS 3.4.11 stable and the upcoming SteamOS 3.5 (currently in 3.5.1 Preview). \
-As soon as more kernels are released by Valve for the SteamOS I will try to compile and update this accordingly. \
-As of now, SteamOS MAIN 3.6 is also using 6.1.52 kernel. \
-Credits goes to [badly-drawn-wizards](https://github.com/badly-drawn-wizards/vangogh_oc_fix) for the source code of the kernel module! \
-I've forked his repo and will soon upload the headers for those to want to build from source.
+As soon as more kernels are released by Valve for the SteamOS I will try to compile and update this accordingly.
+
+Credits goes to [badly-drawn-wizards](https://github.com/badly-drawn-wizards/vangogh_oc_fix) for the source code of the kernel module!
 
 <b> If you like my work please show support by subscribing to my [YouTube channel @10MinuteSteamDeckGamer.](https://www.youtube.com/@10MinuteSteamDeckGamer/) </b> <br>
 <b> I'm just passionate about Linux, Windows, how stuff works, and playing retro and modern video games on my Steam Deck! </b>
@@ -19,6 +18,9 @@ I've forked his repo and will soon upload the headers for those to want to build
 
 ## Video Tutorial - coming soon!
 
+## What's New (as of May 23 2024)
+1. Support for SteamOS 3.6 kernel 6.5.0-valve5-1-neptune-65-g6efe817cc486
+2. Removed sanity checks for BIOS since we now have SREP method! [Use Steam Deck BIOS Manager instead to unlock!](https://github.com/ryanrudolfoba/SteamDeck-BIOS-Manager) [demo guide for Steam Deck BIOS Manager.](https://youtu.be/Q1965gH9xig?si=f2cU86hSj6b8FiYG) [Thanks to stanto and smokeless!](https://www.stanto.com/)
 ## What's New (as of March 02 2024)
 1. SteamOS 3.5.17 support
 2. OLED support on BIOS F7G0109
@@ -56,5 +58,7 @@ I've forked his repo and will soon upload the headers for those to want to build
    `rm vangogh_oc_fix.ko.xz` \
    `sudo steamos-readonly enable`
 
-## Will this survice a branch update?
+## Will this survive a branch update?
 No it won't! You need to run the install again. I could make it but it needs further thought. Let me know if you have ideas!
+
+But on the latest SteamOS 3.6 this is now possible to survive a branch update due to /etc whitelist. I'll update accordingly once SteamOS3.6 goes to stable.
