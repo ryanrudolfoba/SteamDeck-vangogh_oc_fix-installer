@@ -30,75 +30,23 @@ else
 	exit
 fi
 
-
-model_version=$(sudo dmidecode -s system-product-name)
-bios_version=$(sudo dmidecode -s bios-version)
-LCD1=F7A0116
-LCD2=F7A0115
-LCD3=F7A0113
-LCD4=F7A0110
-OLED1=F7G0109
-
 kernel_version=$(uname -r)
-stable1=5.13.0-valve37-1-neptune
-stable2=6.1.52-valve3-1-neptune-61
-stable3=6.1.52-valve9-1-neptune-61
-stable4=6.1.52-valve16-1-neptune-61
+kernel1=5.13.0-valve37-1-neptune
+kernel2=6.1.52-valve3-1-neptune-61
+kernel3=6.1.52-valve9-1-neptune-61
+kernel4=6.1.52-valve16-1-neptune-61
+kernel5=6.5.0-valve5-1-neptune-65-g6efe817cc486
 
-# sanity check - exit immediately if BIOS version is above 116
-
-echo Checking BIOS version ...
-sleep 2
-if [ $bios_version = $LCD1 ] || [ $bios_version = $LCD2 ] || [ $bios_version = $LCD3 ] || [ $bios_version = $LCD4 ] || [ $bios_version = $OLED1 ]
-then
-	echo BIOS version $bios_version is supported by this script!
-else
-	echo BIOS version $bios_version is NOT supported by this script! Exiting immediately!
-	echo Please visit "https://youtu.be/GLvpBQX1pmI?si=jZbG6lNR4pRZowVl" for instructions on how to downgrade if you are using LCD model.
-	exit
-fi
-
+# sanity check - make sure kernel version is supported
 echo Checking kernel version ...
 sleep 2
-if [ $kernel_version = $stable1 ] || [ $kernel_version = $stable2 ] || [ $kernel_version = $stable3 ] || [ $kernel_version = $stable4 ]
+if [ $kernel_version = $kernel1 ] || [ $kernel_version = $kernel2 ] || [ $kernel_version = $kernel3 ] || [ $kernel_version = $kernel4 ] \
+	|| [ $kernel_version = $kernel5 ]
 then 
 	echo Kernel version $kernel_version is supported by this script!
 else
 	echo Kernel version $kernel_version is NOT supported by this script! Exiting immediately!
 	exit
-fi
-
-# All the sanity checks seems good let's go!
-
-# check if OLED Galileo or Jupiter LCD
-echo Checking model version ...
-if [ $model_version = Jupiter ]
-then
-	echo This is a Steam Deck LCD.
-	# Let's backup the BIOS first!
-	echo Let\'s backup the BIOS first!
-	sleep 2
-	mkdir ~/BIOS 2> /dev/null
-	sudo /usr/share/jupiter_bios_updater/h2offt ~/BIOS/jupiter-$bios_version-bios-backup.bin -O
-	ls -l ~/BIOS/jupiter-$bios_version-bios-backup.bin &> /dev/null
-	if [ $? -eq 0 ]
-	then
-		echo BIOS has been backed up successfully!
-	else
-		echo Something went wrong during the BIOS backup process! Exiting immediately!
-		exit
-	fi
-
-	# Let's unlock the BIOS!
-	echo Let\'s unlock the BIOS ...
-	sleep 2
-	rm jupiter-bios-unlock &> /dev/null
-	wget https://gitlab.com/evlaV/jupiter-PKGBUILD/-/raw/master/bin/jupiter-bios-unlock &> /dev/null
-	chmod +x jupiter-bios-unlock
-	sudo ./jupiter-bios-unlock
-else
-	echo This is a Steam Deck OLED.
-	echo No need to unlock the BIOS.
 fi
 
 # Let's copy the kernel module to the correct location
