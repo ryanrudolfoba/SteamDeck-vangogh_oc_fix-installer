@@ -1,2 +1,0 @@
-vangogh_oc_fix kernel module for SteamOS 3.6.19
-kernel version - 6.5.0-valve22-1-neptune-65-g9a338ed8a75e
