@@ -48,24 +48,6 @@ else
 	exit
 fi
 
-
-# check if uninstall parameter provided
-if [ "$1" == "--uninstall" ] && [ -f /lib/modules/$(uname -r)/extra/vangogh_oc_fix.ko.xz ]
-then
-	echo Uninstall parameter provided.
-	echo Performing vangogh_oc_fix kernel module uninstall.
-	echo -e "$current_password\n" | sudo -S rmmod vangogh_oc_fix &> /dev/null
-	echo -e "$current_password\n" | sudo -S steamos-readonly disable &> /dev/null
-	echo -e "$current_password\n" | sudo -S rm -rf /lib/modules/$(uname -r)/extra
-	echo -e "$current_password\n" | sudo -S depmod -a
-	echo -e "$current_password\n" | sudo -S steamos-readonly enable &> /dev/null
-	echo vangogh_oc_fix kernel module uninstall completed!
-	exit
-else
-	echo Uninstall parameter provided but vangogh_oc_fix kernel module is not installed!
-	echo Performing install instead!
-fi
-
 # Let's copy the kernel module to the correct location
 echo Copying the kernel module to the correct location ...
 sleep 2
