@@ -23,6 +23,8 @@ Credits goes to [badly-drawn-wizards](https://github.com/badly-drawn-wizards/van
 2. Removed sanity checks for BIOS since we now have SREP method! [Use Steam Deck BIOS Manager instead to unlock!](https://github.com/ryanrudolfoba/SteamDeck-BIOS-Manager) [demo guide for Steam Deck BIOS Manager.](https://youtu.be/Q1965gH9xig?si=f2cU86hSj6b8FiYG) [Thanks to stanto and smokeless!](https://www.stanto.com/)
 ![image](https://github.com/ryanrudolfoba/SteamDeck-vangogh_oc_fix-installer/assets/98122529/50afe2e8-d386-4c7e-ab81-280fce5f0e73)
 
+## What's New (as of November 04 2024)
+1. Updated for SteamOS 3.6.19 stable release
 
 ## What's New (as of March 02 2024)
 1. SteamOS 3.5.17 support
