@@ -4,6 +4,7 @@ clear
 
 echo Steam Deck vangogh_oc_fix kernel module installer - script by ryanrudolf
 echo https://github.com/ryanrudolfoba/SteamDeck-vangogh_oc_fix-installer
+echo YT - 10MinuteSteamDeckGamer
 echo Credits to https://github.com/badly-drawn-wizards/vangogh_oc_fix
 echo
 echo The script has sanity checks and will install the precompiled vangogh_oc_fix kernel module.
@@ -47,22 +48,43 @@ else
 	exit
 fi
 
+
+# check if uninstall parameter provided
+if [ "$1" == "--uninstall" ] && [ -f /lib/modules/$(uname -r)/extra/vangogh_oc_fix.ko.xz ]
+then
+	echo Uninstall parameter provided.
+	echo Performing vangogh_oc_fix kernel module uninstall.
+	echo -e "$current_password\n" | sudo -S rmmod vangogh_oc_fix &> /dev/null
+	echo -e "$current_password\n" | sudo -S steamos-readonly disable &> /dev/null
+	echo -e "$current_password\n" | sudo -S rm -rf /lib/modules/$(uname -r)/extra
+	echo -e "$current_password\n" | sudo -S depmod -a
+	echo -e "$current_password\n" | sudo -S steamos-readonly enable &> /dev/null
+	echo vangogh_oc_fix kernel module uninstall completed!
+	exit
+else
+	echo Uninstall parameter provided but vangogh_oc_fix kernel module is not installed!
+	echo Performing install instead!
+fi
+
 # Let's copy the kernel module to the correct location
 echo Copying the kernel module to the correct location ...
 sleep 2
-echo -e "$current_password\n" | sudo steamos-readonly disable &> /dev/null
-echo -e "$current_password\n" | sudo cp -R module/$kernel_version/extra /lib/modules/$kernel_version
+echo -e "$current_password\n" | sudo -S steamos-readonly disable &> /dev/null
+echo -e "$current_password\n" | sudo -S cp -R module/$kernel_version/extra /lib/modules/$(uname -r)
 if [ $? -eq 0 ]
 then
 	echo Kernel module copied successfully!
-	echo -e "$current_password\n" | sudo depmod -a || lsmod | grep vangogh_oc_fix
+	echo -e "$current_password\n" | sudo -S depmod -a
+	echo -e "$current_password\n" | sudo -S modprobe vangogh_oc_fix
+	lsmod | grep vangogh_oc_fix
 	if [ $? -eq 0 ]
 	then
 		echo Kernel module loaded successfully!
 	else
 		echo Error loading kernel module.
 		echo Deleteing kernel module.
-		echo -e "$current_password\n" | sudo rm -rf /lib/modules/$kernel_version/extra
+		echo -e "$current_password\n" | sudo -S rm -rf /lib/modules/$(uname -r)/extra
+		echo -e "$current_password\n" | sudo -S steamos-readonly enable &> /dev/null
 		exit
 	fi
 else
