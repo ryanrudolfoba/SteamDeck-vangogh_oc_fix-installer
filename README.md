@@ -18,6 +18,9 @@ Credits goes to [badly-drawn-wizards](https://github.com/badly-drawn-wizards/van
 
 ## Video Tutorial - coming soon!
 
+## What's New (as of April 02 2025)
+1. Support for SteamOS 3.6.24 / 3.6.22 kernel 6.5.0-valve23-1-neptune-65
+
 ## What's New (as of May 23 2024)
 1. Support for SteamOS 3.6 kernel 6.5.0-valve5-1-neptune-65-g6efe817cc486
 2. Removed sanity checks for BIOS since we now have SREP method! [Use Steam Deck BIOS Manager instead to unlock!](https://github.com/ryanrudolfoba/SteamDeck-BIOS-Manager) [demo guide for Steam Deck BIOS Manager.](https://youtu.be/Q1965gH9xig?si=f2cU86hSj6b8FiYG) [Thanks to stanto and smokeless!](https://www.stanto.com/)
