@@ -16,11 +16,12 @@ steamos_version=$(cat /etc/os-release | grep -i version_id | cut -d "=" -f2)
 kernel_version=$(uname -r | cut -d "-" -f 1-5 )
 stable_kernel1=6.1.52-valve16-1-neptune-61
 stable_kernel2=6.5.0-valve22-1-neptune-65
+stable_kernel3=6.5.0-valve23-1-neptune-65
 
 # sanity check - make sure kernel version is supported
 echo Checking kernel version ...
 sleep 2
-if [ $kernel_version = $stable_kernel1 ] || [ $kernel_version = $stable_kernel2 ]
+if [ $kernel_version = $stable_kernel1 ] || [ $kernel_version = $stable_kernel2 ] || [ $kernel_version = $stable_kernel3 ]
 then 
 	echo SteamOS $steamos_version - Kernel version $kernel_version is supported by this script!
 else
